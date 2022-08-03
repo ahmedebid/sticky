@@ -26,6 +26,10 @@ function App() {
     }));
   }
 
+  function deleteNote(id) {
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id ));
+  }
+
   const notesList = notes.map(note => 
     <Note 
       key={note.id} 
@@ -33,9 +37,8 @@ function App() {
       title={note.noteTitle} 
       body={note.noteBody}
       updateNote={updateNote} 
+      deleteNote={deleteNote}
   />);
-
-  console.log(notes);
 
   return (
     <main>

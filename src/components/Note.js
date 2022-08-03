@@ -3,7 +3,12 @@ import deleteIcon from "../images/delete-icon.svg";
 export default function Note(props) {
     return(
         <div className="note">
-            <img src={deleteIcon} alt="delete name tag" className="delete-note" />
+            <img 
+                src={deleteIcon} 
+                onClick={() => props.deleteNote(props.id)} 
+                alt="delete name tag" 
+                className="delete-note" 
+            />
             <input 
                 className="note-title"
                 type="text" 
