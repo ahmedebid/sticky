@@ -84,6 +84,10 @@ select {
 /* General Styles                               */
 /* -------------------------------------------- */
 
+/* You can find the rest of the styles here:
+https://codepen.io/rickyeckhardt/pen/poJwRRb
+*/
+
 body {
   /* background: bg-color bg-image position/bg-size bg-repeat; */
   background: #FFF7AF url("./images/background.jpg") center/cover no-repeat;
@@ -97,18 +101,58 @@ main {
   gap: 20px;
 }
 
+button {
+  line-height: 32px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0,0,0,1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0,0,0,1);
+}
+
+button:hover {
+  background: rgba(0,0,0,1);
+  color: white;
+  border: 1px solid rgba(0,0,0,1);
+}
+
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
 .note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 300px;
   height: 300px;
   background: #f8f4e5;
-  padding: 50px 100px;
+  padding: 25px 25px 25px 30px;
   border: 2px solid rgba(0,0,0,1);
   box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0,0,0,1);
 }
 
-/* You can find the rest of the styles here:
-https://codepen.io/rickyeckhardt/pen/poJwRRb
-*/
+.note-title {
+  font-size: 16px;
+  line-height: 2;
+  font-family: 'Fjalla One', sans-serif;
+  border: none;
+  border-bottom: 5px solid rgba(0,0,0,1);
+  background: transparent;
+  outline: none;
+}
+
+.note-body {
+  resize: none;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
 
 .notes-list {
   display: flex;
@@ -116,4 +160,16 @@ https://codepen.io/rickyeckhardt/pen/poJwRRb
   align-items: center;
   flex-wrap: wrap;
   gap: 50px;
+}
+
+.delete-note {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  width: 15px;
+}
+
+.delete-note:hover {
+  width: 20px;
 }
