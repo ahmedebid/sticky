@@ -1,11 +1,20 @@
 import Note from "./components/Note";
-import {useState} from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 function App() {
 
-  const [notes, setNotes] = useState([]);
+  /* Initialize the notes state with the array stored in local storage.
+   * If there is noting in the local storage, initialize with an empty array.
+   */
+  const [notes, setNotes] = useState(() => JSON.parse(localStorage.getItem("notes")) || []);
 
+  // Save notes to local storage
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes))
+  }, [notes])
+
+  // A function to add a new note
   function addNote() {
     setNotes(prevNotes => [
       ...prevNotes,
@@ -17,6 +26,12 @@ function App() {
     ]);
   }
 
+  // A function to delete an existing note
+  function deleteNote(id) {
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id ));
+  }
+
+  // A function to update an existing note
   function updateNote(e, id) {
     const {name, value} = e.target;
     setNotes(prevNotes => prevNotes.map(note => {
@@ -26,10 +41,9 @@ function App() {
     }));
   }
 
-  function deleteNote(id) {
-    setNotes(prevNotes => prevNotes.filter(note => note.id !== id ));
-  }
-
+  /* Mapping over the notes state array to create a Note component for
+   *  each element in the array. The resultant array will be used to render 
+   * the Note components on the screen */
   const notesList = notes.map(note => 
     <Note 
       key={note.id} 
