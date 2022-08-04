@@ -81,12 +81,10 @@ select {
 
 
 /* -------------------------------------------- */
-/* General Styles                               */
+/* Styles                                       */
 /* -------------------------------------------- */
 
-/* You can find the rest of the styles here:
-https://codepen.io/rickyeckhardt/pen/poJwRRb
-*/
+/* General */
 
 body {
   /* background: bg-color bg-image position/bg-size bg-repeat; */
@@ -100,6 +98,8 @@ main {
   align-items: center;
   gap: 20px;
 }
+
+/* button */
 
 button {
   line-height: 32px;
@@ -122,6 +122,18 @@ button:active {
   transform: translate(4px, 4px);
   box-shadow: none;
 }
+
+/* notes list */
+
+.notes-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+/* note */
 
 .note {
   position: relative;
@@ -152,14 +164,6 @@ button:active {
   border: none;
   background: transparent;
   outline: none;
-}
-
-.notes-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 50px;
 }
 
 .delete-note {
