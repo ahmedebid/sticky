@@ -1,4 +1,5 @@
 import Note from "./components/Note";
+import logoIcon from "./images/logo.png";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
@@ -86,7 +87,10 @@ function App() {
 
   return (
     <main>
-      <h1>Sticky</h1>
+      <div className="logo">
+        <img className="logo-icon" src={logoIcon} alt="logo" />
+        <h1>Sticky</h1>
+      </div>
       <input 
         type="text" 
         placeholder="Type here to search..."

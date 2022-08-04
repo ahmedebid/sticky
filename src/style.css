@@ -99,6 +99,26 @@ main {
   gap: 20px;
 }
 
+h1 {
+  font-family: 'Mouse Memoirs', sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+/* header */
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.logo-icon {
+  width: 60px;
+}
+
 /* button */
 
 button {
@@ -131,6 +151,7 @@ button:active {
   align-items: center;
   flex-wrap: wrap;
   gap: 50px;
+  margin-top: 20px;
 }
 
 /* note */
