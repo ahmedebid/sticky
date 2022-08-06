@@ -13,9 +13,6 @@ function App() {
   // State to hold the search input
   const [searchInput, setSearchInput] = useState("");
 
-  // State to hold filtered search results
-  const [filteredResults, setFilteredResults] = useState([]);
-
   // Save notes to local storage
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes))
@@ -48,34 +45,13 @@ function App() {
     }));
   }
 
-  // A function to handle the dynamic search functionality
-  function searchNotes(searchValue) {
-    setSearchInput(searchValue);
-    if (searchInput !== "") {
-      const filteredNotes = notes.filter(note => {
-        return note.noteTitle.toLowerCase().includes(searchValue) || note.noteBody.toLowerCase().includes(searchValue);
-      });
-      setFilteredResults(filteredNotes);
-    }
-  }
-  
-  /* Mapping over either the "filteredResults" state array or the "notes" 
-   * state array (depending on whether there is a value in the search box 
-   * or not) to create a Note component for each element in the array. 
-   * The resultant array will be used to render the Note components on 
-   * the screen 
-   */
-  const notesList = searchInput !== "" ?
-  filteredResults.map(note => 
-    <Note 
-      key={note.id} 
-      id={note.id} 
-      title={note.noteTitle} 
-      body={note.noteBody}
-      updateNote={updateNote} 
-      deleteNote={deleteNote}
-  />) :
-  notes.map(note => 
+  /* Filtering the notes based on the value in the searchInput state*/
+  const filteredNotes = notes.filter(note => {
+    return note.noteTitle.toLowerCase().includes(searchInput.toLowerCase()) || note.noteBody.toLowerCase().includes(searchInput.toLowerCase());
+  });
+
+  /* Mapping over the filtered notes to output a Note component for each of them.*/
+  const notesList = filteredNotes.map(note => 
     <Note 
       key={note.id} 
       id={note.id} 
@@ -95,7 +71,7 @@ function App() {
         type="text" 
         placeholder="Type here to search..."
         value={searchInput}
-        onChange={(e) => searchNotes(e.target.value)}
+        onChange={(e) => setSearchInput(e.target.value)}
       />
       <button onClick={addNote}>ADD NOTE</button>
       <div className="notes-list">
